@@ -1,0 +1,827 @@
+{
+	"info": {
+		"_postman_id": "d2b2fc26-556d-4ae3-b736-bcd136d4d10a",
+		"name": "Import",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Pre-requisites",
+			"item": [
+				{
+					"name": "Instal BDD",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8fa736c6-63bc-4f7c-bd7e-6b9c227d3835",
+								"exec": [
+									"postman.setGlobalVariable('postmanBDD', responseBody);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://jamesmessinger.com/postman-bdd/dist/postman-bdd.min.js",
+							"protocol": "https",
+							"host": [
+								"jamesmessinger",
+								"com"
+							],
+							"path": [
+								"postman-bdd",
+								"dist",
+								"postman-bdd.min.js"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "https://demo.diprella.com/api/sign_up",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "27050ab0-7f13-4b83-b017-b8e7254b77b2",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"pm.environment.set(\"user-id\", data.id);",
+							"pm.environment.set(\"token\", data.token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "first_name\"",
+							"value": "Provid",
+							"type": "text"
+						},
+						{
+							"key": "last_name",
+							"value": "Drotik",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "{{$randomInt}}asdfghjkl@i.ua",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "qwerty123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://demo.diprella.com/api/sign_up",
+					"protocol": "https",
+					"host": [
+						"demo",
+						"diprella",
+						"com"
+					],
+					"path": [
+						"api",
+						"sign_up"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://demo.diprella.com/api/profile/upload/limit",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ef673aee-024c-4639-9805-cb3dea076383",
+						"exec": [
+							"eval(globals.postmanBDD); ",
+							"    describe('Luba nazva', () => { ",
+							"        it('should return a valid response', () => { ",
+							"            response.should.have.status(200); ",
+							"            response.should.be.json; ",
+							"        });",
+							"                it('should return a valid response', () => { ",
+							"            response.body.should.not.be.empty;",
+							"        });",
+							"        ",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "https://demo.diprella.com/api/profile/upload/limit",
+					"protocol": "https",
+					"host": [
+						"demo",
+						"diprella",
+						"com"
+					],
+					"path": [
+						"api",
+						"profile",
+						"upload",
+						"limit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://demo.diprella.com/api/recommendation/list",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "https://demo.diprella.com/api/recommendation/list",
+					"protocol": "https",
+					"host": [
+						"demo",
+						"diprella",
+						"com"
+					],
+					"path": [
+						"api",
+						"recommendation",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://demo.diprella.com/api/category/list",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "https://demo.diprella.com/api/category/list",
+					"protocol": "https",
+					"host": [
+						"demo",
+						"diprella",
+						"com"
+					],
+					"path": [
+						"api",
+						"category",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://demo.diprella.com/api/profile/upload/limit",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEwOTUsImlzcyI6Imh0dHA6Ly9kZW1vLmRpcHJlbGxhLmNvbS9hcGkvbG9naW4iLCJpYXQiOjE1NDQ3Mjg0NDAsImV4cCI6MTU0NzM1NjQ0MCwibmJmIjoxNTQ0NzI4NDQwLCJqdGkiOiJ1R01majFvekNLRndRZ3d0In0.z2lBAqxYYEZs46QISiY7kBzcI2Rs05vbVxXExFcZ04A"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "https://demo.diprella.com/api/profile/upload/limit",
+					"protocol": "https",
+					"host": [
+						"demo",
+						"diprella",
+						"com"
+					],
+					"path": [
+						"api",
+						"profile",
+						"upload",
+						"limit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://demo.diprella.com/api/category/list",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cc5bc64d-3b07-401f-b47b-9869266a4640",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"pm.environment.set(\"category-id\", data[2].id);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "https://demo.diprella.com/api/category/list",
+					"protocol": "https",
+					"host": [
+						"demo",
+						"diprella",
+						"com"
+					],
+					"path": [
+						"api",
+						"category",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upload image with thumb",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "Projects/Images/snow1.jpg"
+						},
+						{
+							"key": "thumb_image",
+							"type": "file",
+							"src": "Projects/Images/snow2.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{URL}}/api/image/upload",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"image",
+						"upload"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://demo.diprella.com/api/course/create",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fc9580b9-9da8-4eca-bdb8-883032c0836a",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"pm.environment.set(\"course_id\", data.id);",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "{{Content-Type}}",
+						"type": "text"
+					},
+					{
+						"key": "accept",
+						"value": "{{Content-Type}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"industry_id\":[],\n\t\"industries\":[],\n\t\"categories_id\":[2],\n\t\"category\":[\n\t\t\t\t\t{\"id\":\"user-id\",\n\t\t\t\t\t\"name\":\"маркетинг\"}\n\t\t\t\t\t],\n\t\"title\":\"QA NEW COURSE{{$randomInt}}\",\n\t\"privacy\":\"public\",\n\t\"level\":\"beginner\",\n\t\"lang\":\"Türkçe\",\n\t\"description\":\"<p>qa_test_description</p>\",\n\t\"video_cover\":null,\n\t\"video_thumb\":null,\n\t\"id\":null\n}\n\t\n"
+				},
+				"url": {
+					"raw": "https://demo.diprella.com/api/course/create",
+					"protocol": "https",
+					"host": [
+						"demo",
+						"diprella",
+						"com"
+					],
+					"path": [
+						"api",
+						"course",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://demo.diprella.com/api/course/module/get?course_id={{course_id}}",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0f15d969-a218-40a2-9bbe-9b14830867db",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"pm.environment.set(\"module_id\", data.modules[0].id);",
+							"",
+							"eval(globals.postmanBDD); ",
+							"    describe('Luba nazva', () => ",
+							"        { ",
+							"            it('Common Case 1: should return one of success responceswith 200, 201 or 202 status code', () => {",
+							"                    response.status.should.be.oneOf([201, 200, 202]); });",
+							"            it('Common Case 2: should return a JSON response', () => {",
+							"                response.should.be.json;});",
+							"            it('Common Case 3: should return OK message in response', () => {",
+							"                response.ok.should.be.true;",
+							"                ",
+							"});",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "https://demo.diprella.com/api/course/module/get?course_id={{course_id}}",
+					"protocol": "https",
+					"host": [
+						"demo",
+						"diprella",
+						"com"
+					],
+					"path": [
+						"api",
+						"course",
+						"module",
+						"get"
+					],
+					"query": [
+						{
+							"key": "course_id",
+							"value": "{{course_id}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://demo.diprella.com/api/article/create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "{{Content-Type}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "{{Content-Type}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\":\"new lection_qa{{$randomInt}}\",\n\t\"description\":\"\",\n\t\"article\":\"<p>lection_description</p>\",\n\t\"type\":\"article\",\n\t\"presentation\":\"\",\n\t\"expected_time\":3600,\n\t\"hours\":\"0\",\n\t\"minutes\":\"15\",\n\t\"module_id\":\"{{module_id}}\",\n\t\"course_id\":\"{{course_id}}\",\n\t\"id\":null,\n\t\"files_id\":[],\n\t\"answer\":0\n}"
+				},
+				"url": {
+					"raw": "https://demo.diprella.com/api/article/create",
+					"protocol": "https",
+					"host": [
+						"demo",
+						"diprella",
+						"com"
+					],
+					"path": [
+						"api",
+						"article",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://demo.diprella.com/api/course/module/get?course_id={{course_id}}",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "https://demo.diprella.com/api/course/module/get?course_id={{course_id}}",
+					"protocol": "https",
+					"host": [
+						"demo",
+						"diprella",
+						"com"
+					],
+					"path": [
+						"api",
+						"course",
+						"module",
+						"get"
+					],
+					"query": [
+						{
+							"key": "course_id",
+							"value": "{{course_id}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://demo.diprella.com/api/courses/student/invite/list?course_id=280^&search=^&page=1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "https://demo.diprella.com/api/courses/student/invite/list?course_id={{course_id}}&search=^&page=1",
+					"protocol": "https",
+					"host": [
+						"demo",
+						"diprella",
+						"com"
+					],
+					"path": [
+						"api",
+						"courses",
+						"student",
+						"invite",
+						"list"
+					],
+					"query": [
+						{
+							"key": "course_id",
+							"value": "{{course_id}}"
+						},
+						{
+							"key": "search",
+							"value": "^"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://demo.diprella.com/api/profile/package/limit",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "https://demo.diprella.com/api/profile/package/limit",
+					"protocol": "https",
+					"host": [
+						"demo",
+						"diprella",
+						"com"
+					],
+					"path": [
+						"api",
+						"profile",
+						"package",
+						"limit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://demo.diprella.com/api/course/settings",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Accept",
+						"value": "{{Content-Type}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"course_id\":\"{{course_id}}\",\n\"owner\":\n\t\t{\"id\":1095,\n\t\t \"avatar\":null,\n\t\t \"last_name\":\"Drotik\",\n\t\t \"first_name\":\"Provid\"\n\t\t},\n\t\"type\":\"free\",\n\t\"time_zone\":\"UTC +02:00\",\n\t\"time_zone_value\":{\"value\":\"UTC +02:00\",\n\t\"label\":\"(UTC+02:00)Europe/Kiev\"},\n\t\"end_date\":\"unlimited\",\n\t\"currency\":\"USD\",\n\t\"start_date\":\"2018-12-13\",\n\t\"publish\":true\n}"
+				},
+				"url": {
+					"raw": "https://demo.diprella.com/api/course/settings",
+					"protocol": "https",
+					"host": [
+						"demo",
+						"diprella",
+						"com"
+					],
+					"path": [
+						"api",
+						"course",
+						"settings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://demo.diprella.com/api/courses/list",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "https://demo.diprella.com/api/courses/list",
+					"protocol": "https",
+					"host": [
+						"demo",
+						"diprella",
+						"com"
+					],
+					"path": [
+						"api",
+						"courses",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://demo.diprella.com/api/category/list",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "content-type",
+						"value": "application/json"
+					},
+					{
+						"key": "accept",
+						"value": "application/json"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "https://demo.diprella.com/api/category/list",
+					"protocol": "https",
+					"host": [
+						"demo",
+						"diprella",
+						"com"
+					],
+					"path": [
+						"api",
+						"category",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://demo.diprella.com/api/profile/course/progress?page=1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "content-type",
+						"value": "application/json"
+					},
+					{
+						"key": "accept",
+						"value": "application/json"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "https://demo.diprella.com/api/profile/course/progress?page=1",
+					"protocol": "https",
+					"host": [
+						"demo",
+						"diprella",
+						"com"
+					],
+					"path": [
+						"api",
+						"profile",
+						"course",
+						"progress"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://demo.diprella.com/api/recommendation/list",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "content-type",
+						"value": "application/json"
+					},
+					{
+						"key": "accept",
+						"value": "application/json"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "https://demo.diprella.com/api/recommendation/list",
+					"protocol": "https",
+					"host": [
+						"demo",
+						"diprella",
+						"com"
+					],
+					"path": [
+						"api",
+						"recommendation",
+						"list"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
